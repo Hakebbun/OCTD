@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Base
+  - GameOverUi
+  - Economy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - PickUp
+  - TowerLayer
+  - Baddies
+  - Projectiles
+  - Base
+  - Moveable
+  - Container
+  - Upgrade
+  - Boundary
+  - Processor
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: UI
+    uniqueID: 961357955
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ammo
+    uniqueID: 1656851423
+    locked: 0
