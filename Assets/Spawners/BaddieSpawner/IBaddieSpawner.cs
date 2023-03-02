@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBaddieSpawner
 {
-    void spawnBaddie();
+    void spawnBaddie(GameObject baddieToSpawn);
 }

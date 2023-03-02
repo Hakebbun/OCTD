@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class BasicBaddieSpawner : MonoBehaviour, IBaddieSpawner
 {
-
-    public GameObject baddieToSpawn;
     // Start is called before the first frame update
-
-    public void spawnBaddie() {
+    public void spawnBaddie(GameObject baddieToSpawn) {
         GameObject newBaddie = Instantiate(baddieToSpawn, transform.position, transform.localRotation) as GameObject;
     }
 

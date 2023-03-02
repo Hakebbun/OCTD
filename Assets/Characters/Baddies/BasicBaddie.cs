@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBaddie : MonoBehaviour, IHittable
+public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 {
 
     public static event Action OnBaddieKilled;
@@ -60,6 +60,14 @@ public class BasicBaddie : MonoBehaviour, IHittable
             direction = Vector2.up;
 
         }
+    }
+
+    public int GetCost() {
+        return 1;
+    }
+
+    public GameObject GetGameObject() {
+        return gameObject;
     }
 
 }

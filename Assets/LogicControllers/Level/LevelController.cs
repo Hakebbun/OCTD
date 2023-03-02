@@ -10,17 +10,14 @@ public enum Phase {
 public class LevelController : MonoBehaviour
 {
     private static GameObject levelControllerInstance;
-    private static Vector3 SPAWN_TIMER_LOCATION = new Vector3(0f, 30f, 0f);
-    public float difficulty = 3f;
+    public static int difficulty = 3;
 
     public static event Action OnGameOver;
     public static event Action<Phase> OnPhaseChange;
 
     public GameObject gameOverUi;
-    public SpawnTimer spawnTimerPrefab;
+    
     public static bool isDay;
-
-    private SpawnTimer activeSpawnTimer;
 
     private void Awake() {
         DontDestroyOnLoad (gameObject);
@@ -55,11 +52,6 @@ public class LevelController : MonoBehaviour
         OnPhaseChange(Phase.DAY);
     }
 
-    private void createBaddieSpawner() {
-        activeSpawnTimer = Instantiate(spawnTimerPrefab, SPAWN_TIMER_LOCATION, transform.localRotation) as SpawnTimer;
-        activeSpawnTimer.init(difficulty);
-    }
-
     private void togglePhase() {
         if (isDay) {
             OnPhaseChange(Phase.NIGHT);
@@ -80,7 +72,6 @@ public class LevelController : MonoBehaviour
 
     private void StartNightPhase() {
         isDay = false;
-        createBaddieSpawner();
     }
 
     private void StartDayPhase() {

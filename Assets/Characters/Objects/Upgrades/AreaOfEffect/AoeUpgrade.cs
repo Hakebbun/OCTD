@@ -16,7 +16,7 @@ public class AoeUpgrade : MonoBehaviour, IUpgrade
             descriptionUiInstance = Instantiate(descriptionUiPrefab, gameObject.transform.position, gameObject.transform.localRotation);
             descriptionUiInstance.transform.parent = transform;
             descriptionUiInstance.transform.position = transform.position + new Vector3(12f,10f, 0);
-            descriptionUiInstance.GetComponent<UpgradeTextBox>().setText("AoE upgrade; Cost 20; Hit more baddies!");
+            descriptionUiInstance.GetComponent<UpgradeTextBox>().setText(string.Format("AoE upgrade; Cost {0}; Hit more baddies!", getCost()));
         }
     }
 

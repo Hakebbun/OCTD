@@ -20,6 +20,10 @@ public class SpawnTimer : MonoBehaviour
     public GameObject spawner1;
     public GameObject spawner2;
 
+    private int spawnIndex = 0;
+    private List<GameObject> spawnBaddiesList;
+    private List<int> spawnLocationList;
+
     private bool isInitialised;
 
     private List<GameObject> spawners = new List<GameObject>();
@@ -43,30 +47,37 @@ public class SpawnTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInitialised || spawnsLeft <= 0) {
+        if (!isInitialised || 
+            spawnsLeft <= 0 || 
+            spawnIndex >= spawnBaddiesList.Count ||
+            spawnIndex >= spawnLocationList.Count) {
             return;
         }
         
         timeUntilSpawn -= Time.deltaTime;
         if ( timeUntilSpawn < 0 )
         {
-            spawnOnRandomSpawner();
+            spawnNext();
             timeUntilSpawn = UnityEngine.Random.Range(MIN_TIME_TO_SPAWN, MAX_TIME_TO_SPAWN);
         }
     }
 
-    public void init(float spawns) {
-        spawnsLeft = spawns;
+    public void init(List<GameObject> incomingSpawnBaddiesList, List<int> incomingSpawnLocationList) {
+        spawnBaddiesList = incomingSpawnBaddiesList;
+        spawnLocationList = incomingSpawnLocationList;
+        spawnsLeft = spawnBaddiesList.Count;
+        spawnIndex = 0;
         isInitialised = true;
     }
 
-    private void spawnOnRandomSpawner() {
-        GameObject toSpawnOn = spawners[UnityEngine.Random.Range(0,3)];
+    private void spawnNext() {
+        GameObject toSpawnOn = spawners[spawnLocationList[spawnIndex]];
 
         IBaddieSpawner spawner = toSpawnOn.GetComponent<IBaddieSpawner>();
-        spawner.spawnBaddie();
+        spawner.spawnBaddie(spawnBaddiesList[spawnIndex]);
         spawnsLeft --;
         spawnsInPlay ++;
+        spawnIndex ++;
     }
 
     private void OnBaddieKilled() {

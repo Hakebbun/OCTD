@@ -18,7 +18,7 @@ public class RepairUpgrade : MonoBehaviour, IUpgrade
             descriptionUiInstance = Instantiate(descriptionUiPrefab, gameObject.transform.position, gameObject.transform.localRotation);
             descriptionUiInstance.transform.parent = transform;
             descriptionUiInstance.transform.position = transform.position + new Vector3(12f,10f, 0);
-            descriptionUiInstance.GetComponent<UpgradeTextBox>().setText("Repair upgrade; Cost 4; Restore 10% max health");
+            descriptionUiInstance.GetComponent<UpgradeTextBox>().setText(string.Format("Repair upgrade; Cost {0}; Restore 10% max health", getCost()));
         }
     }
 
