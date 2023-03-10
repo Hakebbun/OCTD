@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     private PickUpAction pickUpAction;
     private UseTowerAction useTowerAction;
     private DoUpgradeAction doUpgradeAction;
+    public Animator animator;
     private bool isHoldingBuy = false;
     private float buyTimer = 2.0f;
+
+    private bool facingLeft = true;
 
     void Awake() {
         rb2d = GetComponent<Rigidbody2D>(); 
@@ -35,6 +38,15 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue inputValue) {
         moveInput = inputValue.Get<Vector2>();
+        animator.SetFloat("speed", Mathf.Abs(moveInput.x * moveSpeed));
+        
+        // If there's a a move input and a direction change, flip
+        if ((moveSpeed > 0) &&
+            (moveInput.x > 0 && facingLeft) ||
+            (moveInput.x < 0 && !facingLeft)
+        ) {
+            Flip();
+        } 
     }
 
     void OnPickup() {
@@ -105,6 +117,13 @@ public class PlayerController : MonoBehaviour
             HoldTimerComplete();
             CancelHoldTimer();
         }
+    }
+
+    private void Flip() {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        facingLeft = !facingLeft;
     }
 
     private void HoldTimerComplete(){

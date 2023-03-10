@@ -25,6 +25,6 @@ public class Processable : MonoBehaviour
     }
 
     public void BounceAway() {
-        speed = 50;
+        speed = 90;
     }
 }

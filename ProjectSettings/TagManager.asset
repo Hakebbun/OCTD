@@ -50,3 +50,12 @@ TagManager:
   - name: ammo
     uniqueID: 1656851423
     locked: 0
+  - name: towers
+    uniqueID: 2007367419
+    locked: 0
+  - name: guns
+    uniqueID: 219311481
+    locked: 0
+  - name: bones
+    uniqueID: 2995763889
+    locked: 0

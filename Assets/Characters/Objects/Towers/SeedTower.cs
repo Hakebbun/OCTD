@@ -8,6 +8,7 @@ public class SeedTower : MonoBehaviour, ITower, IUpgradeable, ILoadable
 
     public GameObject bulletType;
     public TMPro.TextMeshProUGUI tmp;
+    public GameObject gunObject;
 
     private MoneySpender moneySpender;
 
@@ -31,7 +32,7 @@ public class SeedTower : MonoBehaviour, ITower, IUpgradeable, ILoadable
             SeedBullet bullet = newGameObject.GetComponent<SeedBullet>();
             if (bullet) {
                 bullet.SetUpgrades(isAoeUpgraded, damageUpgrades);
-                bullet.Fire(transform.up);
+                bullet.Fire(gunObject.transform.up);
                 ammo --;
                 tmp.text = ammo.ToString();
             }
@@ -42,10 +43,10 @@ public class SeedTower : MonoBehaviour, ITower, IUpgradeable, ILoadable
     {
         // if greater than 0, rotate right
         if (aimInput.x > 0) {
-            transform.Rotate(0, 0, aimSpeed * -1);
+            gunObject.transform.Rotate(0, 0, aimSpeed * -1);
         } else if (aimInput.x < 0) {
             // less than 0 rotate left
-            transform.Rotate(0, 0, aimSpeed);
+            gunObject.transform.Rotate(0, 0, aimSpeed);
         } else {
             // equal to 0 do nothing
         }
