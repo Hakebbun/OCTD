@@ -10,6 +10,8 @@ public class SeedProcessor : MonoBehaviour, ILoadable
     public int materialsLeft = 0;
     public int maxMaterials = 5;
     public TMPro.TextMeshProUGUI tmp;
+    public Animator animator;
+
 
 
     // Start is called before the first frame update
@@ -34,6 +36,11 @@ public class SeedProcessor : MonoBehaviour, ILoadable
 
         if (timeLeft <= 0) {
             materialsLeft --;
+
+            if (materialsLeft <= 0) {
+                animator.SetBool("isProcessing", false);
+            }
+
             tmp.text = materialsLeft.ToString();
             GameObject newGameObject = Instantiate(spawnPrefab, transform.position, transform.localRotation) as GameObject;
             Processable processable = newGameObject.GetComponent<Processable>();
@@ -51,6 +58,7 @@ public class SeedProcessor : MonoBehaviour, ILoadable
         // verify loadable
         if (materialsLeft < maxMaterials && ammoToLoad.GetType().Equals(typeof(Seed))) {
             materialsLeft ++;
+            animator.SetBool("isProcessing", true);
             tmp.text = materialsLeft.ToString();
             return true;
         } else {
