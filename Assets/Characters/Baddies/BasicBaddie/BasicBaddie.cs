@@ -8,6 +8,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 
     public static event Action OnBaddieKilled;
     public GameObject corpsePrefab;
+    public Animator animator;
 
     public float health = 5;
     public float moveSpeed = 5;
@@ -37,6 +38,8 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
                 recoiling = false;
                 recoilTime = 0.5f;
                 direction = Vector2.down;
+                animator.SetBool("isRecoiling", false);
+
             }
         }
     }
@@ -58,6 +61,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
             hittable.onDamage(damage);
             recoiling = true;
             direction = Vector2.up;
+            animator.SetBool("isRecoiling", recoiling);
 
         }
     }

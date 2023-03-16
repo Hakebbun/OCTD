@@ -51,6 +51,7 @@ MonoBehaviour:
   MIN_TIME_TO_SPAWN: 1
   spawnsLeft: 3
   spawnsInPlay: 0
+  corpsesInPlay: 0
   timeUntilSpawn: 0
   spawner0: {fileID: 4004909478931853935}
   spawner1: {fileID: 5901145016895874787}
@@ -143,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3338490888936046676, guid: 1a3a45c1e298f4eb281346fd33a8545e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3338490888936046676, guid: 1a3a45c1e298f4eb281346fd33a8545e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -214,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3338490888936046676, guid: 1a3a45c1e298f4eb281346fd33a8545e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 3338490888936046676, guid: 1a3a45c1e298f4eb281346fd33a8545e, type: 3}
       propertyPath: m_LocalPosition.y
