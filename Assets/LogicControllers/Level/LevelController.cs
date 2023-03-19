@@ -12,7 +12,6 @@ public class LevelController : MonoBehaviour
     private static GameObject levelControllerInstance;
     public static int difficulty = 3;
 
-    public static event Action OnGameOver;
     public static event Action<Phase> OnPhaseChange;
 
     public GameObject gameOverUi;
@@ -25,7 +24,7 @@ public class LevelController : MonoBehaviour
         if (levelControllerInstance == null) {
             levelControllerInstance = gameObject;
         } else {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
 
         BaseController.OnBaseDestroyed += EndLevelDefeat;
@@ -48,7 +47,7 @@ public class LevelController : MonoBehaviour
 
     private void EndLevelVictory() {
         isDay = true;
-        difficulty ++;
+        difficulty += 2;
         OnPhaseChange(Phase.DAY);
     }
 

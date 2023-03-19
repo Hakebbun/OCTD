@@ -9,6 +9,7 @@ public class SeedBullet : MonoBehaviour, IBullet
     private Vector2 direction;
     private bool isAoeUpgraded = false;
     private int numPierces = 1;
+    private bool calculatingDamage = false;
 
     private Rigidbody2D rb2d;
 
@@ -32,11 +33,13 @@ public class SeedBullet : MonoBehaviour, IBullet
     private void OnTriggerEnter2D(Collider2D collider) {
         IHittable hittable = collider.gameObject.GetComponent<IHittable>();
 
-        if (hittable != null)
+        if (hittable != null && !calculatingDamage)
         {
+            calculatingDamage = true;
             hittable.onDamage(damage);
             if (isAoeUpgraded && numPierces > 0) {
                 numPierces -= 1;
+                calculatingDamage = false;
                 return;
             } else {
                 Destroy(gameObject);

@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     private UseTowerAction useTowerAction;
     private DoUpgradeAction doUpgradeAction;
     public Animator animator;
-    private bool isHoldingBuy = false;
-    private float buyTimer = 2.0f;
 
     private bool facingLeft = true;
 
@@ -33,7 +31,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() {
         rb2d.MovePosition(rb2d.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         useTowerAction.controlTower(moveInput);
-        UpdateHoldTimer();
     }
 
     void OnMove(InputValue inputValue) {
@@ -91,32 +88,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnBuy(InputValue inputValue) {
-        if(inputValue.isPressed) {
-            StartHoldTimer();
-        } else {
-            CancelHoldTimer();
-        }
-    }
-
-    private void StartHoldTimer() {
-        isHoldingBuy = true;
-        buyTimer = 2.0f;
-    }
-
-    private void CancelHoldTimer(){
-        isHoldingBuy = false;
-        buyTimer = 2.0f;
-    }
-
-    private void UpdateHoldTimer() {
-        if (isHoldingBuy) {
-            buyTimer -= Time.deltaTime;
-        }
-
-        if (buyTimer <= 0) {
-            HoldTimerComplete();
-            CancelHoldTimer();
-        }
     }
 
     private void Flip() {
@@ -124,10 +95,6 @@ public class PlayerController : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
         facingLeft = !facingLeft;
-    }
-
-    private void HoldTimerComplete(){
-        Debug.Log("Hold timer complete");
     }
 
 }

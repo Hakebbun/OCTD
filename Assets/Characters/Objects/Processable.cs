@@ -6,7 +6,7 @@ public class Processable : MonoBehaviour
 {
 
     public float speed;
-    public float decelleration = 20;
+    public float decelleration;
     private Rigidbody2D rb2d;
 
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class Processable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speed <=0) {return;} 
+        if (speed <=0 ) {return;} 
         speed -= (decelleration * Time.deltaTime);
         
         rb2d.MovePosition(rb2d.position + Vector2.left * speed * Time.deltaTime);

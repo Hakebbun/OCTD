@@ -10,6 +10,7 @@ public class BaseController : MonoBehaviour, IHittable, IUpgradeable
     public GameObject HealthBar;
     private HealthBarController healthBarController;
     private MoneySpender moneySpender;
+    private BaseDamageRenderer damageRenderer;
     public float maxHealth = 100;
 
     public float health;
@@ -18,11 +19,13 @@ public class BaseController : MonoBehaviour, IHittable, IUpgradeable
     {
         healthBarController = HealthBar.GetComponent<HealthBarController>();
         moneySpender = GetComponent<MoneySpender>();
+        damageRenderer = GetComponent<BaseDamageRenderer>();
     }
 
     public void onDamage(float damage) {
         health -= damage;
         healthBarController.SetHealth(health);
+        damageRenderer.updateSprite(health/maxHealth);
         if (health <=0) {
             Destroy(gameObject);
             OnBaseDestroyed?.Invoke();

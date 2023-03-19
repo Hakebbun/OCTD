@@ -15,6 +15,6 @@ public class DestroyOnPhaseChange : MonoBehaviour
     }
 
     private void OnPhaseChange(Phase phase) {
-        DestroyObject(gameObject);
+        Destroy(gameObject);
     }
 }

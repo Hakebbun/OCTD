@@ -27,7 +27,7 @@ public class UpgradeSpawner : MonoBehaviour
         if (upgradeSpawnerInstance == null) {
             upgradeSpawnerInstance = gameObject;
         } else {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
 
         possibleUpgrades.Add(Upgrades.REPAIR);

@@ -34,6 +34,7 @@ public class PickUpAction : MonoBehaviour
                     if (itemHolding.GetComponent<Rigidbody2D>()) {
                             itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                         }
+            ResetScaleOnDrop(itemHolding);
             itemHolding = null;
         }
     }
@@ -94,5 +95,11 @@ public class PickUpAction : MonoBehaviour
 
     void OnDestroy() {
         LevelController.OnPhaseChange -= OnPhaseChange;
+    }
+
+    private void ResetScaleOnDrop(GameObject objectToDrop) {
+        Vector3 currentScale = objectToDrop.transform.localScale;
+        currentScale.x = Mathf.Abs(currentScale.x);
+        objectToDrop.transform.localScale = currentScale;
     }
 }

@@ -17,7 +17,7 @@ public class EconomyController : MonoBehaviour
         if (economyControllerInstance == null) {
             economyControllerInstance = gameObject;
         } else {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
 
         BasicBaddieCorpse.OnCorpseDespawn += OnCorpseDespawn;

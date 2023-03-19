@@ -23,7 +23,7 @@ public class SpawnCoordinator : MonoBehaviour
         if (spawnCoordinatorInstance == null) {
             spawnCoordinatorInstance = gameObject;
         } else {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
 
         spawnIntent = GetComponent<SpawnIntent>();
