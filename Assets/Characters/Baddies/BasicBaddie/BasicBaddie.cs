@@ -24,7 +24,6 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>(); 
-        direction = Vector2.down;
     }
 
     // Update is called once per frame
@@ -62,7 +61,6 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
             recoiling = true;
             direction = Vector2.up;
             animator.SetBool("isRecoiling", recoiling);
-
         }
     }
 
@@ -72,6 +70,10 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 
     public GameObject GetGameObject() {
         return gameObject;
+    }
+
+    public void init() {
+        direction = Vector2.down;
     }
 
 }

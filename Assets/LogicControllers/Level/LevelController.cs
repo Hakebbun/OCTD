@@ -10,7 +10,7 @@ public enum Phase {
 public class LevelController : MonoBehaviour
 {
     private static GameObject levelControllerInstance;
-    public static int difficulty = 3;
+    public static int difficulty = 30;
 
     public static event Action<Phase> OnPhaseChange;
 

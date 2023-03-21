@@ -2660,6 +2660,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 3509711961961129332, guid: 02ca9ae0fefb54c38be79d3f0380109c, type: 3}
+      propertyPath: baddiePrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509711961961129332, guid: 02ca9ae0fefb54c38be79d3f0380109c, type: 3}
+      propertyPath: baddiePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7382393495727421072, guid: ec6b1744e3980463492d823b7c9f50ef, type: 3}
     - target: {fileID: 6979054409053386174, guid: 02ca9ae0fefb54c38be79d3f0380109c, type: 3}
       propertyPath: m_Name
       value: LevelController
@@ -3396,6 +3404,10 @@ PrefabInstance:
     - target: {fileID: 8053677197027815326, guid: 83d3ead431bae4cb5a4fc8bc2545cfdf, type: 3}
       propertyPath: m_Offset.y
       value: -0.21675873
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053677197027815326, guid: 83d3ead431bae4cb5a4fc8bc2545cfdf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8053677197027815326, guid: 83d3ead431bae4cb5a4fc8bc2545cfdf, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode

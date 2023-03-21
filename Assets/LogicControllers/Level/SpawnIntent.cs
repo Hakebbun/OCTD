@@ -13,7 +13,7 @@ public class SpawnIntent : MonoBehaviour
         while (pointsToSpend > 0) {
 
             int maxRange = baddiePrefabs.Count;
-            GameObject baddieToAdd = baddiePrefabs[Random.Range(0, baddiePrefabs.Count -1)];
+            GameObject baddieToAdd = baddiePrefabs[Random.Range(0, baddiePrefabs.Count)];
 
             while (baddieToAdd.GetComponent<IBaddie>().GetCost() > pointsToSpend) {
                 maxRange = (int) Mathf.Floor(maxRange * 0.66f);

@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IBaddie {
     int GetCost();
     GameObject GetGameObject();
+    void init();
 }
