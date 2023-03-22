@@ -9,6 +9,7 @@ public class FastBaddieController : MonoBehaviour, IHittable, IBaddie
     public float damage;
     public GameObject corpsePrefab;
     public GameObject bulletPrefab;
+    public Animator animator;
 
     private int MAX_X = 40;
     private int MIN_X = -40;
@@ -37,15 +38,16 @@ public class FastBaddieController : MonoBehaviour, IHittable, IBaddie
             if (timeInState <= 0) {
                 baddieState = FastBaddieState.COOLING;
                 Shoot();
+                animator.SetBool("IsMoving", false);
                 timeInState = MOVING_TIME;
             }
         } else if (baddieState == FastBaddieState.COOLING) {
             if (timeInState <= 0) {
                 baddieState = FastBaddieState.MOVING;
+                animator.SetBool("IsMoving", true);
                 timeInState = MOVING_TIME;
             }
         }
-
     }
 
      public void onDamage(float damage) {

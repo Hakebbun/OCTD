@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7954550351176854988}
   - component: {fileID: 7439177875694989761}
   - component: {fileID: 4270027554223397480}
+  - component: {fileID: 1882964000}
   m_Layer: 8
   m_Name: FastBaddiePrefab
   m_TagString: Untagged
@@ -164,3 +165,24 @@ MonoBehaviour:
   damage: 10
   corpsePrefab: {fileID: 0}
   bulletPrefab: {fileID: 5612481361122686772, guid: c8e44ba4d2033449ba6f60690c92a349, type: 3}
+  animator: {fileID: 1882964000}
+--- !u!95 &1882964000
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382393495727421072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 714ec7a2b54fd4a2094994e0e391b2fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
