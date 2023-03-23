@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  decelleration: 90
+  decelleration: 180
 --- !u!50 &-4167663489444868116
 Rigidbody2D:
   serializedVersion: 4
