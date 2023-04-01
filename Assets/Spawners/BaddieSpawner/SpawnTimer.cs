@@ -35,7 +35,7 @@ public class SpawnTimer : MonoBehaviour
 
         BasicBaddieCorpse.OnCorpseSpawn += OnCorpseSpawn;
         BasicBaddieCorpse.OnCorpseDespawn += OnCorpseDespawn;
-        BasicBaddie.OnBaddieKilled += OnBaddieKilled;
+        BaddieUtils.OnBaddieKilled += OnBaddieKilled;
 
         spawners.Add(spawner0);
         spawners.Add(spawner1);
@@ -113,7 +113,7 @@ public class SpawnTimer : MonoBehaviour
 
     void OnDestroy() {
         LevelController.OnPhaseChange -= OnPhaseChange;
-        BasicBaddie.OnBaddieKilled -= OnBaddieKilled;
+        BaddieUtils.OnBaddieKilled -= OnBaddieKilled;
         BasicBaddieCorpse.OnCorpseSpawn -= OnCorpseSpawn;
         BasicBaddieCorpse.OnCorpseDespawn -= OnCorpseDespawn;
     }

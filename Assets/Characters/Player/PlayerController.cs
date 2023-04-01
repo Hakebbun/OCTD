@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
         doUpgradeAction = GetComponent<DoUpgradeAction>();
     }
 
-
     void FixedUpdate() {
         rb2d.MovePosition(rb2d.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         useTowerAction.controlTower(moveInput);

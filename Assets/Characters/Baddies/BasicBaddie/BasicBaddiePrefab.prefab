@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3978972214556090539}
   - component: {fileID: -4183074222238712471}
   - component: {fileID: 7038867134410026850}
+  - component: {fileID: 8917860654175726262}
   m_Layer: 8
   m_Name: BasicBaddiePrefab
   m_TagString: Untagged
@@ -186,3 +187,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8917860654175726262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887492859693698424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb179b17143ab4640969ceebf7ee6e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

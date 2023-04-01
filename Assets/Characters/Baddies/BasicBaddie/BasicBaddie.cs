@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 {
-
-    public static event Action OnBaddieKilled;
     public GameObject corpsePrefab;
     public Animator animator;
 
@@ -17,6 +15,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 
     public float damage = 5;
     private Rigidbody2D rb2d;
+    private BaddieUtils utils;
     private Vector2 direction;
     private bool recoiling = false;
 
@@ -24,6 +23,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>(); 
+        utils = GetComponent<BaddieUtils>();
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
     public void onDamage(float damage) {
         health -= damage;
         if (health <= 0) {
-            OnBaddieKilled?.Invoke();
+            utils.EmitBaddieKilledEvent();
             Instantiate(corpsePrefab, transform.position, transform.localRotation);
             Destroy(gameObject);
         }

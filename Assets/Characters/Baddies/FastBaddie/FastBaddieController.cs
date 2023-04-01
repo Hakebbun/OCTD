@@ -19,12 +19,14 @@ public class FastBaddieController : MonoBehaviour, IHittable, IBaddie
     private Vector2 direction;
 
     private Rigidbody2D rb2d;
+    private BaddieUtils utils;
     private FastBaddieState baddieState;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        utils = GetComponent<BaddieUtils>();
         baddieState = FastBaddieState.MOVING;
     }
 
@@ -53,7 +55,8 @@ public class FastBaddieController : MonoBehaviour, IHittable, IBaddie
      public void onDamage(float damage) {
         health -= damage;
         if (health <= 0) {
-            // Instantiate(corpsePrefab, transform.position, transform.localRotation);
+            Instantiate(corpsePrefab, transform.position, transform.localRotation);
+            utils.EmitBaddieKilledEvent();
             Destroy(gameObject);
         }
     }
