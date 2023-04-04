@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1872310461307697716}
   - component: {fileID: -9216628659925276303}
   - component: {fileID: 8835617932213846718}
+  - component: {fileID: 2005158128}
   m_Layer: 8
   m_Name: FastBaddieBullet
   m_TagString: Untagged
@@ -97,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d44fcd178103c4be0a2c6f1d472087f1, type: 3}
+  m_Sprite: {fileID: -1825282990, guid: 1364c13e519d7455d9ed18c8ca3b05e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,3 +149,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1500
   damage: 15
+--- !u!95 &2005158128
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5612481361122686772}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc2fb1c5e0ae74b1da099a56805f19de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

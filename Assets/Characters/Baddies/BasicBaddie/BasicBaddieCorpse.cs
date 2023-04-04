@@ -19,7 +19,7 @@ public class BasicBaddieCorpse : MonoBehaviour, ICorpse
     }
 
     void OnDestroy() {
-        OnCorpseDespawn.Invoke(Mathf.RoundToInt(Mathf.Ceil(timeLeft)));
+        OnCorpseDespawn?.Invoke(Mathf.RoundToInt(Mathf.Ceil(timeLeft)));
     }
 
     // Update is called once per frame

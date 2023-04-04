@@ -8,7 +8,7 @@ public class EconomyController : MonoBehaviour
     private static GameObject economyControllerInstance;
     public static event Action<int> OnMoneyChange;
 
-    public static int money;
+    public static int money = 500;
 
     void Start()
     {

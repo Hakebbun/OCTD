@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PickUpAction pickUpAction;
     private UseTowerAction useTowerAction;
     private DoUpgradeAction doUpgradeAction;
+    private BuyBuildingAction buyBuildingAction;
     public Animator animator;
 
     private bool facingLeft = true;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         pickUpAction = GetComponent<PickUpAction>();
         useTowerAction = GetComponent<UseTowerAction>();
         doUpgradeAction = GetComponent<DoUpgradeAction>();
+        buyBuildingAction = GetComponent<BuyBuildingAction>();
     }
 
     void FixedUpdate() {
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void OnUse() {
         useTowerAction.useTower();
+        buyBuildingAction.buyBuilding();
     }
 
     void OnDebug() {
