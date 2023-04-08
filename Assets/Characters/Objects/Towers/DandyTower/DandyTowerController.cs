@@ -16,7 +16,7 @@ public class DandyTowerController : MonoBehaviour, ITower, IUpgradeable, ILoadab
 
     public int ammo = 5;
     public float aimSpeed = 40;
-    public int maxAmmo = 5;
+    public int maxAmmo = 10;
     public int damage = 3;
 
 
@@ -39,12 +39,11 @@ public class DandyTowerController : MonoBehaviour, ITower, IUpgradeable, ILoadab
     }
 
     public void OnFire() {
-        if (ammo > 0) {
+        if (ammo >= 2) {
             GameObject newTarget = Instantiate(targetPrefab, crossHair.transform.position, crossHair.transform.localRotation);
             DandyTargetController toArm = newTarget.GetComponent<DandyTargetController>();
             toArm.arm(damage);
-
-            ammo --;
+            ammo -= 2;
         }
     }
 
@@ -54,7 +53,7 @@ public class DandyTowerController : MonoBehaviour, ITower, IUpgradeable, ILoadab
 
     public bool Load(IAmmo ammoToLoad) {
         // TODO: verify loadable ammo
-        if (false) {
+        if (ammo < maxAmmo && ammoToLoad.GetType().Equals(typeof(SeedAmmo))) {
             ammo ++;
             tmp.text = ammo.ToString();
             return true;

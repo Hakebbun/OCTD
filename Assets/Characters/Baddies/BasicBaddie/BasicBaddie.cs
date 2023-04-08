@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
+public class BasicBaddie : MonoBehaviour, IHittable, IBaddie, IBaddieBuffable
 {
     public GameObject corpsePrefab;
     public Animator animator;
@@ -74,6 +74,10 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie
 
     public void init() {
         direction = Vector2.down;
+    }
+
+    public void BuffSpeed() {
+        moveSpeed = moveSpeed * 1.5f; 
     }
 
 }
