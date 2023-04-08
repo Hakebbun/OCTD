@@ -36,7 +36,7 @@ public class BuffingBaddieController : MonoBehaviour, IHittable, IBaddie
 
     private void doBuff() {
         Vector3 positionToSpawn = transform.position;
-        positionToSpawn.y -= 4;
+        positionToSpawn.y -= 3;
         Instantiate(buffBeamPrefab, positionToSpawn, transform.localRotation);
     }
 
