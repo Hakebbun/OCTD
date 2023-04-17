@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IBaddieBuffable {
-    void BuffSpeed();
+    void BuffBaddie();
 }

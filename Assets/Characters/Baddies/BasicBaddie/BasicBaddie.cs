@@ -18,6 +18,7 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie, IBaddieBuffable
     private BaddieUtils utils;
     private Vector2 direction;
     private bool recoiling = false;
+    private int timesBuffed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -76,8 +77,17 @@ public class BasicBaddie : MonoBehaviour, IHittable, IBaddie, IBaddieBuffable
         direction = Vector2.down;
     }
 
-    public void BuffSpeed() {
-        moveSpeed = moveSpeed * 1.5f; 
+    public void BuffBaddie() {
+        if (timesBuffed >= 2) {
+            health += 1;
+        } else if ( timesBuffed == 1 ) {
+            damage  = damage * 1.5f;
+        } else if (timesBuffed == 0) {
+            moveSpeed = moveSpeed * 3f; 
+            recoilTime = recoilTime / 3f;
+        } 
+
+        timesBuffed += 1;
     }
 
 }

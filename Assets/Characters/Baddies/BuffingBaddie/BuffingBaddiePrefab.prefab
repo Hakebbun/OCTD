@@ -71,7 +71,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1613318, y: 0.15923642}
+  m_Offset: {x: -0.0011766851, y: -0.005478002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -82,7 +82,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35048348, y: 0.35467353}
+  m_Size: {x: 0.3401888, y: 0.34584957}
   m_EdgeRadius: 0
 --- !u!212 &-2438119527125234930
 SpriteRenderer:
@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bd17931a4534a9ab6af96d708d88e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffProjectilePrefab: {fileID: 4039313179009614654, guid: 919e131b86c704e2ebd35bf7fd72aece, type: 3}
   corpsePrefab: {fileID: 2667628503498787373, guid: 1fff65cead77a4c66864b184eedb3c8e, type: 3}
-  buffBeamPrefab: {fileID: 4039313179009614654, guid: 919e131b86c704e2ebd35bf7fd72aece, type: 3}
   health: 5
   moveSpeed: 0
   attackSpeed: 4

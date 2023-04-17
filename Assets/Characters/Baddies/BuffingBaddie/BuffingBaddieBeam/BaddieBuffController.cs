@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBuffController : MonoBehaviour
+public class BaddieBuffController : MonoBehaviour
 {
 
     public float speed;
@@ -20,7 +20,7 @@ public class SpeedBuffController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         IBaddieBuffable buffable = other.gameObject.GetComponent<IBaddieBuffable>();
         if (buffable != null) {
-            buffable.BuffSpeed();
+            buffable.BuffBaddie();
         }
 
         // breaks on contact with hittables (base mostly, but maybe other things?)

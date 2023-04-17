@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BuffingBaddieController : MonoBehaviour, IHittable, IBaddie
 {
+    public GameObject buffProjectilePrefab;
     public GameObject corpsePrefab;
-    public GameObject buffBeamPrefab;
 
     public float health = 5;
     public float moveSpeed = 0;
@@ -37,7 +37,7 @@ public class BuffingBaddieController : MonoBehaviour, IHittable, IBaddie
     private void doBuff() {
         Vector3 positionToSpawn = transform.position;
         positionToSpawn.y -= 3;
-        Instantiate(buffBeamPrefab, positionToSpawn, transform.localRotation);
+        Instantiate(buffProjectilePrefab, positionToSpawn, transform.localRotation);
     }
 
     public void onDamage(float damage) {
@@ -60,4 +60,6 @@ public class BuffingBaddieController : MonoBehaviour, IHittable, IBaddie
     public int GetCost() {
         return 5;
     }
+
+
 }
