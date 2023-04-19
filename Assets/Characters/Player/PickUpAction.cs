@@ -7,10 +7,13 @@ public class PickUpAction : MonoBehaviour
 
     public LayerMask pickUpMask;
     public Transform holdSpot;
-    private GameObject itemHolding = null;
+    public GameObject itemHolding = null;
+
+    private PlayerController playerController;
 
     void Start() {
         pickUpMask = LayerMask.GetMask("Moveable", "Upgrade");
+        playerController = GetComponent<PlayerController>();
         LevelController.OnPhaseChange += OnPhaseChange;
     }
 
@@ -47,8 +50,19 @@ public class PickUpAction : MonoBehaviour
     }
 
     private bool pickupLooseItem() {
+            int xOffset;
+            if (playerController.facingLeft) {
+                xOffset = -3;
+            } else {
+                xOffset = 3;
+            }
+
+            Vector2 positionToPickup = transform.position;
+            positionToPickup.x = positionToPickup.x + xOffset;
+
             // Pickup item if holding nothing
-            Collider2D toPickUp = Physics2D.OverlapCircle(transform.position, .4f, pickUpMask);
+            Collider2D toPickUp = Physics2D.OverlapCircle(positionToPickup, .8f, pickUpMask);
+            
             if (toPickUp) {
                 itemHolding = toPickUp.gameObject;
                 itemHolding.transform.position = holdSpot.position;
@@ -63,8 +77,18 @@ public class PickUpAction : MonoBehaviour
     }
 
     private bool pickupFromContainer() {
+            int xOffset;
+            if (playerController.facingLeft) {
+                xOffset = -3;
+            } else {
+                xOffset = 3;
+            }
+
+            Vector2 positionToPickup = transform.position;
+            positionToPickup.x = positionToPickup.x + xOffset;
+
             // Pickup item if holding nothing
-            Collider2D toPickUpFrom = Physics2D.OverlapCircle(transform.position, .4f, LayerMask.GetMask("Container"));
+            Collider2D toPickUpFrom = Physics2D.OverlapCircle(positionToPickup, .8f, LayerMask.GetMask("Container"));
             if (toPickUpFrom) {
                 Container container = toPickUpFrom.GetComponent<Container>();
                 if (container) {

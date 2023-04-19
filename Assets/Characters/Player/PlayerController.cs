@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private BuyBuildingAction buyBuildingAction;
     public Animator animator;
 
-    private bool facingLeft = true;
+    public bool facingLeft = true;
 
     void Awake() {
         rb2d = GetComponent<Rigidbody2D>(); 

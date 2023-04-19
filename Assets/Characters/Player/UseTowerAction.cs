@@ -44,12 +44,19 @@ public class UseTowerAction : MonoBehaviour
 
     public bool loadTower(IAmmo ammoToLoad) {
         // make sure we're not hooked into the tower
-        Debug.Log("load tower");
         if (towerToUse == null) {
-            Debug.Log("tower to use null");
-            Collider2D toLoadObj = Physics2D.OverlapCircle(transform.position, .4f, LayerMask.GetMask("TowerLayer", "Processor"));
+            int xOffset;
+            if (controller.facingLeft) {
+                xOffset = -3;
+            } else {
+                xOffset = 3;
+            }
+
+            Vector2 positionToLoad = transform.position;
+            positionToLoad.x = positionToLoad.x + xOffset;
+
+            Collider2D toLoadObj = Physics2D.OverlapCircle(positionToLoad, .4f, LayerMask.GetMask("TowerLayer", "Processor"));
             if (toLoadObj) {
-                Debug.Log("found something in tower mask ");
                 ILoadable toLoad = toLoadObj.gameObject.GetComponent<ILoadable>();
                 return toLoad.Load(ammoToLoad);
             } 
@@ -58,7 +65,17 @@ public class UseTowerAction : MonoBehaviour
     }
 
     private void connectToTower() {
-        Collider2D toUse = Physics2D.OverlapCircle(transform.position, .4f, towerMask);
+            int xOffset;
+            if (controller.facingLeft) {
+                xOffset = -3;
+            } else {
+                xOffset = 3;
+            }
+
+            Vector2 positionToLoad = transform.position;
+            positionToLoad.x = positionToLoad.x + xOffset;
+
+        Collider2D toUse = Physics2D.OverlapCircle(positionToLoad, .4f, towerMask);
         if (toUse) {
             towerToUse = toUse.gameObject;
             controller.moveSpeed = 0;
