@@ -32,7 +32,6 @@ public class BackgroundColorTransition : MonoBehaviour
             lerpTime += Time.deltaTime / 2.0f; // Divided by 5 to make it 5 seconds.
             currentColor = Color.Lerp(startingColor, targetColor, lerpTime);
             Tilemap.color = currentColor;
-
         }
     }
 

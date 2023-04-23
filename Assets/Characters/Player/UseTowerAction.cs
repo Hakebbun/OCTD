@@ -66,7 +66,7 @@ public class UseTowerAction : MonoBehaviour
 
     private void connectToTower() {
             int xOffset;
-            if (controller.facingLeft) {
+        if (controller.facingLeft) {
                 xOffset = -3;
             } else {
                 xOffset = 3;

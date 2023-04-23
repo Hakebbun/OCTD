@@ -8,6 +8,7 @@ public class PickUpAction : MonoBehaviour
     public LayerMask pickUpMask;
     public Transform holdSpot;
     public GameObject itemHolding = null;
+    public GameObject pickupSpot;
 
     private PlayerController playerController;
 

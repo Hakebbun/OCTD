@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7290f88c580574651876f9f85e49a1a6
+guid: bec14c4d6c91c434a86c63ce84e87259
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,11 +105,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork_0
+      name: avocadoProcessorSquareSheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 7
+        y: 115
         width: 32
         height: 32
       alignment: 0
@@ -119,18 +119,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1657f17bb3c624db1bf8b078fe27c1ec
-      internalID: -2135899316
+      spriteID: fd3c781ca28374eb3ac2f4d263877109
+      internalID: 356513272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_1
+      name: avocadoProcessorSquareSheet_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 0
+        x: 42
+        y: 115
         width: 32
         height: 32
       alignment: 0
@@ -140,18 +140,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dd7a714ef36e49f8813a17f9dc996ab
-      internalID: 1428458449
+      spriteID: 7368791ddcd674840908779bc084c7cf
+      internalID: -884352310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_2
+      name: avocadoProcessorSquareSheet_2
       rect:
         serializedVersion: 2
-        x: 70
-        y: 0
+        x: 77
+        y: 115
         width: 32
         height: 32
       alignment: 0
@@ -161,18 +161,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a10ba96470fff4dddb955855fc590c83
-      internalID: -1851689037
+      spriteID: 1dc6c54e45d8e46c194a5235558e7c6b
+      internalID: 1980206081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_3
+      name: avocadoProcessorSquareSheet_3
       rect:
         serializedVersion: 2
-        x: 105
-        y: 0
+        x: 112
+        y: 115
         width: 32
         height: 32
       alignment: 0
@@ -182,18 +182,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 717d81cc8ac8141459a8ae83f66835de
-      internalID: -292726811
+      spriteID: 44a6687da723245ddaca1b808fb65624
+      internalID: 2141891623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_4
+      name: avocadoProcessorSquareSheet_4
       rect:
         serializedVersion: 2
-        x: 140
-        y: 0
+        x: 7
+        y: 78
         width: 32
         height: 32
       alignment: 0
@@ -203,18 +203,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 193d81b6381b84b5cbf1d6d90861e166
-      internalID: 1020136370
+      spriteID: 4893522a23c824ac3bc6ecb56452a1a1
+      internalID: 1446924447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_5
+      name: avocadoProcessorSquareSheet_5
       rect:
         serializedVersion: 2
-        x: 175
-        y: 0
+        x: 42
+        y: 78
         width: 32
         height: 32
       alignment: 0
@@ -224,18 +224,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dabd8ef13df254a57b6ea168f1032942
-      internalID: 939532478
+      spriteID: f6b2be2bee6564b569ec13371d179b9a
+      internalID: 1226063138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_6
+      name: avocadoProcessorSquareSheet_6
       rect:
         serializedVersion: 2
-        x: 210
-        y: 0
+        x: 77
+        y: 78
         width: 32
         height: 32
       alignment: 0
@@ -245,18 +245,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91e542841e1d7434c906a5eff39d500a
-      internalID: 560891543
+      spriteID: 9d9c021c752f14e1f849f270887d13e9
+      internalID: -1008010519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_7
+      name: avocadoProcessorSquareSheet_7
       rect:
         serializedVersion: 2
-        x: 245
-        y: 0
+        x: 112
+        y: 78
         width: 32
         height: 32
       alignment: 0
@@ -266,18 +266,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6e4231ca3a3f49beb55f80703f5a719
-      internalID: 1518072723
+      spriteID: 9b03434db4d684a85a18df1231401be0
+      internalID: -1490696380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_8
+      name: avocadoProcessorSquareSheet_8
       rect:
         serializedVersion: 2
-        x: 280
-        y: 0
+        x: 7
+        y: 41
         width: 32
         height: 32
       alignment: 0
@@ -287,18 +287,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6de733b4e88a848239d8ea036c3bf8f8
-      internalID: 1940034785
+      spriteID: 74c0607c6ecf947d9930162361cb8716
+      internalID: -640788778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_9
+      name: avocadoProcessorSquareSheet_9
       rect:
         serializedVersion: 2
-        x: 315
-        y: 0
+        x: 42
+        y: 41
         width: 32
         height: 32
       alignment: 0
@@ -308,18 +308,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb6f09413cbc8437599c4e1423713cbf
-      internalID: -1669441130
+      spriteID: bc8429a0c431c43748ebedddddbc055f
+      internalID: 348549402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_10
+      name: avocadoProcessorSquareSheet_10
       rect:
         serializedVersion: 2
-        x: 350
-        y: 0
+        x: 77
+        y: 41
         width: 32
         height: 32
       alignment: 0
@@ -329,18 +329,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b325d16412d494692a3a30bc16072d3c
-      internalID: -1068851851
+      spriteID: 71f59bf388478472aa10870f28b4309f
+      internalID: 428689163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_11
+      name: avocadoProcessorSquareSheet_11
       rect:
         serializedVersion: 2
-        x: 385
-        y: 0
+        x: 112
+        y: 41
         width: 32
         height: 32
       alignment: 0
@@ -350,18 +350,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68edb9e2e8e7945af9bcec29861011f7
-      internalID: 2015797179
+      spriteID: 9e279222845064c5a8de41d2e6b5b80a
+      internalID: 1961154105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_12
+      name: avocadoProcessorSquareSheet_12
       rect:
         serializedVersion: 2
-        x: 420
-        y: 0
+        x: 7
+        y: 3
         width: 32
         height: 32
       alignment: 0
@@ -371,18 +371,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf0af18a27b8045789ff96905d0d45e8
-      internalID: -1656954637
+      spriteID: 83144ae33975f4f74a79ab1800a62b64
+      internalID: 110626159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_13
+      name: avocadoProcessorSquareSheet_13
       rect:
         serializedVersion: 2
-        x: 455
-        y: 0
+        x: 42
+        y: 3
         width: 32
         height: 32
       alignment: 0
@@ -392,18 +392,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd0d50e4d8f84777ba653bba740deba
-      internalID: -437388317
+      spriteID: 990b2cb255c644fa39be183822f403f9
+      internalID: -1877507387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_14
+      name: avocadoProcessorSquareSheet_14
       rect:
         serializedVersion: 2
-        x: 490
-        y: 0
+        x: 77
+        y: 3
         width: 32
         height: 32
       alignment: 0
@@ -413,18 +413,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68d160921b3774663bcfeef16bf51059
-      internalID: -366786058
+      spriteID: eb01bf2b8d9374f24bf22c6bfc41cce9
+      internalID: -1144746395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork_15
+      name: avocadoProcessorSquareSheet_15
       rect:
         serializedVersion: 2
-        x: 525
-        y: 0
+        x: 112
+        y: 3
         width: 32
         height: 32
       alignment: 0
@@ -434,29 +434,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83caae9cb0fef43a088a7509b0b52b61
-      internalID: 1780734144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_Artwork_16
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fe575fa2b0d048c2a12b0ef63e1b96a
-      internalID: -1445836325
+      spriteID: d24b537f478e84387b49e2642805ecec
+      internalID: 351480660
       vertices: []
       indices: 
       edges: []
@@ -472,23 +451,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Untitled_Artwork_11: 2015797179
-      Untitled_Artwork_8: 1940034785
-      Untitled_Artwork_12: -1656954637
-      Untitled_Artwork_2: -1851689037
-      Untitled_Artwork_14: -366786058
-      Untitled_Artwork_6: 560891543
-      Untitled_Artwork_1: 1428458449
-      Untitled_Artwork_15: 1780734144
-      Untitled_Artwork_13: -437388317
-      Untitled_Artwork_4: 1020136370
-      Untitled_Artwork_16: -1445836325
-      Untitled_Artwork_7: 1518072723
-      Untitled_Artwork_3: -292726811
-      Untitled_Artwork_5: 939532478
-      Untitled_Artwork_9: -1669441130
-      Untitled_Artwork_10: -1068851851
-      Untitled_Artwork_0: -2135899316
+      avocadoProcessorSquareSheet_0: 356513272
+      avocadoProcessorSquareSheet_14: -1144746395
+      avocadoProcessorSquareSheet_3: 2141891623
+      avocadoProcessorSquareSheet_13: -1877507387
+      avocadoProcessorSquareSheet_1: -884352310
+      avocadoProcessorSquareSheet_6: -1008010519
+      avocadoProcessorSquareSheet_12: 110626159
+      avocadoProcessorSquareSheet_9: 348549402
+      avocadoProcessorSquareSheet_7: -1490696380
+      avocadoProcessorSquareSheet_5: 1226063138
+      avocadoProcessorSquareSheet_10: 428689163
+      avocadoProcessorSquareSheet_8: -640788778
+      avocadoProcessorSquareSheet_11: 1961154105
+      avocadoProcessorSquareSheet_4: 1446924447
+      avocadoProcessorSquareSheet_15: 351480660
+      avocadoProcessorSquareSheet_2: 1980206081
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
