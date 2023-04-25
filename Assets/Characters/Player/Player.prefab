@@ -118,6 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 25
   animator: {fileID: 265857341}
+  gridSize: 5
+  inputThreshold: 0.3
+  closeDistance: 1
   facingLeft: 1
 --- !u!50 &3431968786908187835
 Rigidbody2D:
@@ -389,3 +392,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e69a2b5f7d417188d4e5f19098f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toPickUp: {fileID: 0}

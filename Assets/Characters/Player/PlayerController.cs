@@ -19,6 +19,16 @@ public class PlayerController : MonoBehaviour
     private BuyBuildingAction buyBuildingAction;
     public Animator animator;
 
+    [Header("Grid Movement")]
+    public float gridSize;
+    public float inputThreshold;
+    public float closeDistance;
+    private bool closeToGridPoint;
+    private bool lockNonParallelMovement;
+    private Vector2 moveToPosition;
+    private Vector2 prevMoveToPosition;
+    private Vector2 prevMoveDirection;
+
     public bool facingLeft = true;
 
     void Awake() {
@@ -27,15 +37,53 @@ public class PlayerController : MonoBehaviour
         useTowerAction = GetComponent<UseTowerAction>();
         doUpgradeAction = GetComponent<DoUpgradeAction>();
         buyBuildingAction = GetComponent<BuyBuildingAction>();
+
+        moveToPosition = rb2d.position;
     }
 
-    void FixedUpdate() {
-        rb2d.MovePosition(rb2d.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+    void FixedUpdate()
+    {
+        // If no movement, finish moving to previously set point
+        if (moveInput == Vector2.zero)
+        {
+            moveToPosition = prevMoveToPosition;
+        }
+        // Allow moving back and forth but NOT any other directions until a grid point is reached
+        else if (lockNonParallelMovement)   // The code within this 'else if' and the following 'else' are the same, but combining them felt MESSY
+        {
+            if (moveInput == prevMoveDirection || moveInput == -prevMoveDirection)
+            {
+                moveToPosition = FindValidGridPointInDirection(rb2d.position, moveInput);
+                prevMoveDirection = moveInput;
+            }
+        }
+        // Allow movement in any direction
+        else
+        {
+            moveToPosition = FindValidGridPointInDirection(rb2d.position, moveInput);
+            prevMoveDirection = moveInput;
+        }
+        prevMoveToPosition = moveToPosition;
+
+        // Snap to point when close enough, to avoid jitters/errors in position
+        closeToGridPoint = (rb2d.position - moveToPosition).magnitude < closeDistance ? true : false;
+        if (!closeToGridPoint)
+        {
+            rb2d.MovePosition(rb2d.position + (moveToPosition - rb2d.position).normalized * moveSpeed * Time.fixedDeltaTime);
+            lockNonParallelMovement = true;
+        }
+        else
+        {
+            rb2d.MovePosition(moveToPosition);
+            lockNonParallelMovement = false;
+        }
+
         useTowerAction.controlTower(moveInput);
     }
 
     void OnMove(InputValue inputValue) {
-        moveInput = inputValue.Get<Vector2>();
+        moveInput = InputValueMapping(inputValue.Get<Vector2>());
+
         animator.SetFloat("speed", Mathf.Abs(moveInput.x * moveSpeed));
         
         // If there's a a move input and a direction change, flip
@@ -97,6 +145,32 @@ public class PlayerController : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
         facingLeft = !facingLeft;
+    }
+
+    private Vector2 InputValueMapping(Vector2 inputValue)
+    {
+        Vector2 finalInput = Vector2.zero;
+
+        float absX = Mathf.Abs(inputValue.x);
+        float absY = Mathf.Abs(inputValue.y);
+
+        if (absX > inputThreshold)
+            finalInput.x = (inputValue.x > 0) ? 1f : -1f;
+        
+        if (absY > inputThreshold)
+            finalInput.y = (inputValue.y > 0) ? 1f : -1f;
+
+        return finalInput;
+    }
+
+    private Vector2 FindValidGridPointInDirection(Vector2 startingPoint, Vector2 direction)
+    {
+        Vector2 resultGridPoint = new Vector2();
+        resultGridPoint = startingPoint + (direction * gridSize);
+        // Round to nearest whole grize size
+        resultGridPoint.x = Mathf.RoundToInt(resultGridPoint.x / gridSize) * gridSize;
+        resultGridPoint.y = Mathf.RoundToInt(resultGridPoint.y / gridSize) * gridSize;
+        return resultGridPoint;
     }
 
 }
