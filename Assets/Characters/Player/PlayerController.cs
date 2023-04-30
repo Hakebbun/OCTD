@@ -96,7 +96,19 @@ public class PlayerController : MonoBehaviour
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
+
+        // holding object gets flipped because of the parent. We flip it again to maintain it
+        FlipHolding();
+
         facingLeft = !facingLeft;
+    }
+
+    private void FlipHolding() {
+        if (pickUpAction != null && pickUpAction.getHoldingObject() != null) {
+            Vector3 currentScale = pickUpAction.getHoldingObject().transform.localScale;
+            currentScale.x *= -1;
+            pickUpAction.getHoldingObject().transform.localScale = currentScale;
+        }
     }
 
 }

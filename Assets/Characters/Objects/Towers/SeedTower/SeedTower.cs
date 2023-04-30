@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SeedTower : MonoBehaviour, ITower, IUpgradeable, ILoadable
+public class SeedTower : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
 {
 
     public GameObject bulletType;
     public TMPro.TextMeshProUGUI tmp;
     public GameObject gunObject;
 
+    private List<int> activeUpgradeIds; 
+
     private MoneySpender moneySpender;
 
     public int ammo = 0;
     public float aimSpeed = 1f;
     private bool isAoeUpgraded = false;
-    private int damageUpgrades = 0;
+    public int damageUpgrades = 0;
     public int maxAmmo = 10;
 
     void Start()
     {
+        activeUpgradeIds = new List<int>();
         LevelController.OnPhaseChange += OnPhaseChange;
         moneySpender = GetComponent<MoneySpender>();
         tmp.text = ammo.ToString();
@@ -81,17 +84,24 @@ public class SeedTower : MonoBehaviour, ITower, IUpgradeable, ILoadable
         LevelController.OnPhaseChange -= OnPhaseChange;
     }
 
-    public bool OnUpgrade(IUpgrade upgrade) {
-        if (upgrade.GetType().Equals(typeof(AoeUpgrade))){
-            AoeUpgrade aoeUpgrade = upgrade as AoeUpgrade;
-            isAoeUpgraded = true;
-            moneySpender.SpendMoney(aoeUpgrade.getCost());
-            return true;
-        } else if (upgrade.GetType().Equals(typeof(DamageUpgrade))) {
-            DamageUpgrade damageUpgrade = upgrade as DamageUpgrade;
-            damageUpgrades += 1;
-            moneySpender.SpendMoney(damageUpgrade.getCost());
-            return true;
+    public bool OnBuff(IBuildingBuff buildingBuff) {
+        if (buildingBuff.GetType().Equals(typeof(DamageBuffer))) {
+            if (!activeUpgradeIds.Contains(buildingBuff.GetId())) {
+                activeUpgradeIds.Add(buildingBuff.GetId());
+                damageUpgrades += 1;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool OnDebuff(IBuildingBuff buildingBuff) {
+        if (buildingBuff.GetType().Equals(typeof(DamageBuffer))) {
+            if (activeUpgradeIds.Contains(buildingBuff.GetId())) {
+                activeUpgradeIds.Remove(buildingBuff.GetId());
+                damageUpgrades -= 1;
+                return true;
+            }
         }
         return false;
     }
