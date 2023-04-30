@@ -16,7 +16,7 @@ public class SeedTower : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
 
     public int ammo = 0;
     public float aimSpeed = 1f;
-    private bool isAoeUpgraded = false;
+    public int aoeUpgrades = 0;
     public int damageUpgrades = 0;
     public int maxAmmo = 10;
 
@@ -34,7 +34,7 @@ public class SeedTower : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
             GameObject newGameObject = Instantiate(bulletType, transform.position, transform.localRotation) as GameObject;
             SeedBullet bullet = newGameObject.GetComponent<SeedBullet>();
             if (bullet) {
-                bullet.SetUpgrades(isAoeUpgraded, damageUpgrades);
+                bullet.SetUpgrades(aoeUpgrades > 0, damageUpgrades);
                 bullet.Fire(gunObject.transform.up);
                 ammo --;
                 tmp.text = ammo.ToString();
@@ -91,7 +91,14 @@ public class SeedTower : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
                 damageUpgrades += 1;
                 return true;
             }
+        } else if (buildingBuff.GetType().Equals(typeof(AoeBuffer))) {
+            if (!activeUpgradeIds.Contains(buildingBuff.GetId())) {
+                activeUpgradeIds.Add(buildingBuff.GetId());
+                aoeUpgrades += 1;
+                return true;
+            }
         }
+
         return false;
     }
 
@@ -100,6 +107,12 @@ public class SeedTower : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
             if (activeUpgradeIds.Contains(buildingBuff.GetId())) {
                 activeUpgradeIds.Remove(buildingBuff.GetId());
                 damageUpgrades -= 1;
+                return true;
+            }
+        } else if (buildingBuff.GetType().Equals(typeof(AoeBuffer))) {
+            if (activeUpgradeIds.Contains(buildingBuff.GetId())) {
+                activeUpgradeIds.Remove(buildingBuff.GetId());
+                aoeUpgrades += 1;
                 return true;
             }
         }
