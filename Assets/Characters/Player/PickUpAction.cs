@@ -35,9 +35,10 @@ public class PickUpAction : MonoBehaviour
     public void dropItem() {
         if (itemHolding != null) {
             itemHolding.transform.parent = null;
-                    if (itemHolding.GetComponent<Rigidbody2D>()) {
-                            itemHolding.GetComponent<Rigidbody2D>().simulated = true;
-                        }
+            if (itemHolding.GetComponent<Rigidbody2D>()) {
+                    itemHolding.GetComponent<Rigidbody2D>().simulated = true;
+                }
+            itemHolding.transform.position = GridHelper.ClosestGridPoint(itemHolding.transform.position);
             ResetScaleOnDrop(itemHolding);
             itemHolding = null;
         }

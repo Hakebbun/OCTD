@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     [Header("Grid Movement")]
-    public float gridSize;
     public float inputThreshold;
     public float closeDistance;
     private bool closeToGridPoint;
@@ -53,14 +52,16 @@ public class PlayerController : MonoBehaviour
         {
             if (moveInput == prevMoveDirection || moveInput == -prevMoveDirection)
             {
-                moveToPosition = FindValidGridPointInDirection(rb2d.position, moveInput);
+                moveToPosition = rb2d.position + (moveInput * GridHelper.gridSize);
+                moveToPosition = GridHelper.ClosestGridPoint(moveToPosition);
                 prevMoveDirection = moveInput;
             }
         }
         // Allow movement in any direction
         else
         {
-            moveToPosition = FindValidGridPointInDirection(rb2d.position, moveInput);
+            moveToPosition = rb2d.position + (moveInput * GridHelper.gridSize);
+            moveToPosition = GridHelper.ClosestGridPoint(moveToPosition);
             prevMoveDirection = moveInput;
         }
         prevMoveToPosition = moveToPosition;
@@ -162,15 +163,4 @@ public class PlayerController : MonoBehaviour
 
         return finalInput;
     }
-
-    private Vector2 FindValidGridPointInDirection(Vector2 startingPoint, Vector2 direction)
-    {
-        Vector2 resultGridPoint = new Vector2();
-        resultGridPoint = startingPoint + (direction * gridSize);
-        // Round to nearest whole grize size
-        resultGridPoint.x = Mathf.RoundToInt(resultGridPoint.x / gridSize) * gridSize;
-        resultGridPoint.y = Mathf.RoundToInt(resultGridPoint.y / gridSize) * gridSize;
-        return resultGridPoint;
-    }
-
 }
