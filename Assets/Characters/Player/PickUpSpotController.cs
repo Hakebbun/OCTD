@@ -20,7 +20,6 @@ public class PickUpSpotController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (transform.parent.gameObject.GetComponent<PickUpAction>().itemHolding != null) {
-            Debug.Log("on enter, already holding something");
             return;
         }                
         other.gameObject.GetComponent<Renderer>().sharedMaterial.SetFloat("_Thickness", 0.02f);
@@ -28,7 +27,6 @@ public class PickUpSpotController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other){
         if (transform.parent.gameObject.GetComponent<PickUpAction>().itemHolding != null) {
-            Debug.Log("on exit, already holding something");
         }
         other.gameObject.GetComponent<Renderer>().sharedMaterial.SetFloat("_Thickness", 0f);
     }

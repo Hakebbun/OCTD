@@ -15,11 +15,9 @@ public class Container : MonoBehaviour
     private void OnPhaseChange(Phase phase) {
         switch(phase) {
             case Phase.DAY:
-                GetComponent<Renderer>().sharedMaterial.SetFloat("_Thickness", 0f);
                 gameObject.layer = LayerMask.NameToLayer("Moveable");   
                 break;
             case Phase.NIGHT:
-                GetComponent<Renderer>().sharedMaterial.SetFloat("_Thickness", 0.02f);
                 gameObject.layer = LayerMask.NameToLayer("Container");
                 break;
         }

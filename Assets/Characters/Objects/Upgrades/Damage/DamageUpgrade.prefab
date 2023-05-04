@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionUiPrefab: {fileID: 6462205653613902627, guid: e098f0556512048a3a7fa55e1155c132, type: 3}
+  damageBufferPrefab: {fileID: 6605627977524613541, guid: c5980b6c83e794ebcb26a8980adaa340, type: 3}
+  cost: 15
+  descriptionBuildingName: Damage Buffer
 --- !u!61 &7836024225783018483
 BoxCollider2D:
   m_ObjectHideFlags: 0

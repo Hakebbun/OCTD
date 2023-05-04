@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DandyTowerController : MonoBehaviour, ITower, IUpgradeable, ILoadable
+public class DandyTowerController : MonoBehaviour, ITower, IBuildingBuffable, ILoadable
 {
 
     public GameObject targetPrefab;
@@ -73,8 +73,11 @@ public class DandyTowerController : MonoBehaviour, ITower, IUpgradeable, ILoadab
         LevelController.OnPhaseChange -= OnPhaseChange;
     }
 
-    public bool OnUpgrade(IUpgrade upgrade) {
-        // TODO: verify loadable upgrades
+    public bool OnBuff(IBuildingBuff buildingBuff) {
+        return false;
+    }
+
+    public bool OnDebuff(IBuildingBuff buildingBuff) {
         return false;
     }
 

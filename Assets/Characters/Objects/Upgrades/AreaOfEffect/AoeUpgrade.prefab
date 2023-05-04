@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionUiPrefab: {fileID: 6462205653613902627, guid: e098f0556512048a3a7fa55e1155c132, type: 3}
+  aoeBufferPrefab: {fileID: 6605627977524613541, guid: c1795377fae214e7c82f614ed284dd6d, type: 3}
+  cost: 20
+  descriptionBuildingName: Aoe Buff
 --- !u!61 &490929262551555808
 BoxCollider2D:
   m_ObjectHideFlags: 0
