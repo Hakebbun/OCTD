@@ -274,7 +274,8 @@ MonoBehaviour:
   pickupSpot: {fileID: 0}
   pickupObjectScale: 0.2
   placementCursor: {fileID: 1525734191267988295, guid: c157549e522115149861640dd9e15e87, type: 3}
-  cursorDistanceFromPlayer: 2
+  placementError: {fileID: 2862737571074569709, guid: 7d0f35fe2ba98a54b8331a3e84dfb1c4, type: 3}
+  cursorDistanceFromPlayer: 1.8
 --- !u!114 &6169249282861680118
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,17 +14,22 @@ public class PickUpAction : MonoBehaviour
     private Vector3 objectOriginalScale;
 
     public GameObject placementCursor;
+    public GameObject placementError;
     public float cursorDistanceFromPlayer;
     private Vector2 cursorPosition;
+    private LayerMask gridSpaceMask;
 
     private PlayerController playerController;
 
     void Start() {
         pickUpMask = LayerMask.GetMask("Moveable", "Upgrade");
+        gridSpaceMask = LayerMask.GetMask("GridSpace");
         playerController = GetComponent<PlayerController>();
         LevelController.OnPhaseChange += OnPhaseChange;
         placementCursor = Instantiate(placementCursor);
         placementCursor.SetActive(false);
+        placementError = Instantiate(placementError);
+        placementError.SetActive(false);
     }
 
     private void Update()
@@ -54,6 +59,10 @@ public class PickUpAction : MonoBehaviour
 
     public void dropItem() {
         if (itemHolding != null) {
+            // Check if anything will obstruct the 'drop'
+            if (CheckForObject(cursorPosition))
+                return;
+
             itemHolding.transform.parent = null;
             if (itemHolding.GetComponent<Rigidbody2D>()) {
                     itemHolding.GetComponent<Rigidbody2D>().simulated = true;
@@ -152,5 +161,22 @@ public class PickUpAction : MonoBehaviour
         //currentScale.x = Mathf.Abs(currentScale.x);
         //objectToDrop.transform.localScale = currentScale;
         objectToDrop.transform.localScale = objectOriginalScale;
+    }
+
+    private bool CheckForObject(Vector2 checkPosition)
+    {
+        Vector2 checkBoxSize = new Vector2(GridHelper.gridSize * 2, GridHelper.gridSize * 2);
+        RaycastHit2D hit = Physics2D.BoxCast(checkPosition, checkBoxSize, 0f, Vector2.up, 0f, gridSpaceMask);
+
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.layer);
+            placementError.SetActive(false);
+            placementError.transform.position = hit.collider.transform.position;
+            placementError.SetActive(true);
+            return true;
+        }
+
+        return false;
     }
 }
