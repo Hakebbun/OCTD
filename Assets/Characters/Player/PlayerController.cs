@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     [Header("Grid Movement")]
+    public bool enableGridMovement;
     public float inputThreshold;
     public float closeDistance;
     private bool closeToGridPoint;
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveToPosition;
     private Vector2 prevMoveToPosition;
     private Vector2 prevMoveDirection;
+    public Vector2 PrevMoveDirection
+    {
+        get { return prevMoveDirection; }
+    }
 
     public bool facingLeft = true;
 
@@ -42,41 +47,50 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // If no movement, finish moving to previously set point
-        if (moveInput == Vector2.zero)
+        if (enableGridMovement)
         {
-            moveToPosition = prevMoveToPosition;
-        }
-        // Allow moving back and forth but NOT any other directions until a grid point is reached
-        else if (lockNonParallelMovement)   // The code within this 'else if' and the following 'else' are the same, but combining them felt MESSY
-        {
-            if (moveInput == prevMoveDirection || moveInput == -prevMoveDirection)
+            // If no movement, finish moving to previously set point
+            if (moveInput == Vector2.zero)
+            {
+                moveToPosition = prevMoveToPosition;
+            }
+            // Allow moving back and forth but NOT any other directions until a grid point is reached
+            else if (lockNonParallelMovement)   // The code within this 'else if' and the following 'else' are the same, but combining them felt MESSY
+            {
+                if (moveInput == prevMoveDirection || moveInput == -prevMoveDirection)
+                {
+                    moveToPosition = rb2d.position + (moveInput * GridHelper.gridSize);
+                    moveToPosition = GridHelper.ClosestGridPoint(moveToPosition);
+                    prevMoveDirection = moveInput;
+                }
+            }
+            // Allow movement in any direction
+            else
             {
                 moveToPosition = rb2d.position + (moveInput * GridHelper.gridSize);
                 moveToPosition = GridHelper.ClosestGridPoint(moveToPosition);
                 prevMoveDirection = moveInput;
             }
-        }
-        // Allow movement in any direction
-        else
-        {
-            moveToPosition = rb2d.position + (moveInput * GridHelper.gridSize);
-            moveToPosition = GridHelper.ClosestGridPoint(moveToPosition);
-            prevMoveDirection = moveInput;
-        }
-        prevMoveToPosition = moveToPosition;
+            prevMoveToPosition = moveToPosition;
 
-        // Snap to point when close enough, to avoid jitters/errors in position
-        closeToGridPoint = (rb2d.position - moveToPosition).magnitude < closeDistance ? true : false;
-        if (!closeToGridPoint)
-        {
-            rb2d.MovePosition(rb2d.position + (moveToPosition - rb2d.position).normalized * moveSpeed * Time.fixedDeltaTime);
-            lockNonParallelMovement = true;
+            // Snap to point when close enough, to avoid jitters/errors in position
+            closeToGridPoint = (rb2d.position - moveToPosition).magnitude < closeDistance ? true : false;
+            if (!closeToGridPoint)
+            {
+                rb2d.MovePosition(rb2d.position + (moveToPosition - rb2d.position).normalized * moveSpeed * Time.fixedDeltaTime);
+                lockNonParallelMovement = true;
+            }
+            else
+            {
+                rb2d.MovePosition(moveToPosition);
+                lockNonParallelMovement = false;
+            }
         }
         else
         {
-            rb2d.MovePosition(moveToPosition);
-            lockNonParallelMovement = false;
+            if (moveInput != Vector2.zero)
+                prevMoveDirection = moveInput;
+            rb2d.MovePosition(rb2d.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         }
 
         useTowerAction.controlTower(moveInput);
@@ -84,7 +98,14 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue inputValue)
     {
-        moveInput = InputValueMapping(inputValue.Get<Vector2>());
+        if (enableGridMovement)
+        {
+            moveInput = InputValueMappingToGrid(inputValue.Get<Vector2>());
+        }
+        else
+        {
+            moveInput = inputValue.Get<Vector2>();
+        }
 
         animator.SetFloat("speed", Mathf.Abs(moveInput.x * moveSpeed));
         
@@ -161,7 +182,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Vector2 InputValueMapping(Vector2 inputValue)
+    private Vector2 InputValueMappingToGrid(Vector2 inputValue)
     {
         Vector2 finalInput = Vector2.zero;
 

@@ -7,8 +7,15 @@ public class PickUpAction : MonoBehaviour
 
     public LayerMask pickUpMask;
     public Transform holdSpot;
+    public Transform towerHoldSpot;
     public GameObject itemHolding = null;
     public GameObject pickupSpot;
+    public float pickupObjectScale;
+    private Vector3 objectOriginalScale;
+
+    public GameObject placementCursor;
+    public float cursorDistanceFromPlayer;
+    private Vector2 cursorPosition;
 
     private PlayerController playerController;
 
@@ -16,6 +23,19 @@ public class PickUpAction : MonoBehaviour
         pickUpMask = LayerMask.GetMask("Moveable", "Upgrade");
         playerController = GetComponent<PlayerController>();
         LevelController.OnPhaseChange += OnPhaseChange;
+        placementCursor = Instantiate(placementCursor);
+        placementCursor.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (itemHolding)
+        {
+            cursorPosition = this.transform.position;
+            cursorPosition += (playerController.PrevMoveDirection * GridHelper.gridSize * cursorDistanceFromPlayer);
+            cursorPosition = GridHelper.ClosestGridPoint(cursorPosition);
+            placementCursor.transform.position = cursorPosition;
+        }
     }
 
     public void pickUpObject() {
@@ -38,7 +58,8 @@ public class PickUpAction : MonoBehaviour
             if (itemHolding.GetComponent<Rigidbody2D>()) {
                     itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                 }
-            itemHolding.transform.position = GridHelper.ClosestGridPoint(itemHolding.transform.position);
+            itemHolding.transform.position = GridHelper.ClosestGridPoint(cursorPosition);
+            placementCursor.SetActive(false);
             ResetScaleOnDrop(itemHolding);
             itemHolding = null;
         }
@@ -67,12 +88,15 @@ public class PickUpAction : MonoBehaviour
             
             if (toPickUp) {
                 itemHolding = toPickUp.gameObject;
-                itemHolding.transform.position = holdSpot.position;
+                objectOriginalScale = toPickUp.gameObject.transform.localScale;
+                itemHolding.transform.localScale = itemHolding.transform.localScale * pickupObjectScale;
+                itemHolding.transform.position = towerHoldSpot.position;
                 itemHolding.transform.parent = transform;
 
-                if (itemHolding.GetComponent<Rigidbody2D>()) {
+            if (itemHolding.GetComponent<Rigidbody2D>()) {
                     itemHolding.GetComponent<Rigidbody2D>().simulated = false;
-                    return true;
+                    placementCursor.SetActive(true);
+                return true;
                 }
             }
             return false;
@@ -124,8 +148,9 @@ public class PickUpAction : MonoBehaviour
     }
 
     private void ResetScaleOnDrop(GameObject objectToDrop) {
-        Vector3 currentScale = objectToDrop.transform.localScale;
-        currentScale.x = Mathf.Abs(currentScale.x);
-        objectToDrop.transform.localScale = currentScale;
+        //Vector3 currentScale = objectToDrop.transform.localScale;
+        //currentScale.x = Mathf.Abs(currentScale.x);
+        //objectToDrop.transform.localScale = currentScale;
+        objectToDrop.transform.localScale = objectOriginalScale;
     }
 }
